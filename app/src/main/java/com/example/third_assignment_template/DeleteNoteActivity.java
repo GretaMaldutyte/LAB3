@@ -45,15 +45,24 @@ public class DeleteNoteActivity extends AppCompatActivity {
     }
 
     public void onDeleteNoteClick(View view) {
+        if (spSelectionForDelete.getSelectedItem() == null) {
+            return;
+        }
+
         String selectedNote = spSelectionForDelete.getSelectedItem().toString();
 
-//      //https://stackoverflow.com/questions/14034803/misbehavior-when-trying-to-store-a-string-set-using-sharedpreferences
+        //https://stackoverflow.com/questions/14034803/misbehavior-when-trying-to-store-a-string-set-using-sharedpreferences
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor spEd = sp.edit();
         Set<String> currentNotes = sp.getStringSet("notes", new HashSet<String>());
+
         currentNotes.remove(selectedNote);
 
         spEd.putStringSet("notes", currentNotes);
-        spEd.commit();
+        spEd.apply();
+
+        this.notesList.clear();
+        this.notesList.addAll(currentNotes);
+        listAdapter.notifyDataSetChanged();
     }
 }

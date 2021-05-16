@@ -12,23 +12,32 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
         android:onClick="onAddNoteClick"
         android:text="@string/btn_add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNote" />
 
     <EditText
-        android:id="@+id/txtNote"
+        android:id="@+id/txtNoteName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="4dp"
         android:ems="10"
-        android:hint="@string/type_note_here"
+        android:hint="@string/type_note_name_here"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtNote"
+        android:layout_width="205dp"
+        android:layout_height="86dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/type_note_here"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNoteName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
